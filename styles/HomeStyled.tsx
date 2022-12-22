@@ -51,9 +51,8 @@ export const SorteioWrapper = styled.div`
     @media (max-width: 700px) {
         div {
             bottom: -40px;
-            left: 50%;
-            right: 42%;
-            transform: translate(-50%, 0);
+            right: 50%;
+            transform: translate(50%, 0);
         }
     }
 `;
