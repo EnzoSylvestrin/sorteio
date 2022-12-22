@@ -47,6 +47,15 @@ export const SorteioWrapper = styled.div`
     p:hover {
         animation: sort 1.2s ease;
     }
+
+    @media (max-width: 700px) {
+        div {
+            bottom: -40px;
+            left: 50%;
+            right: 42%;
+            transform: translate(-50%, 0);
+        }
+    }
 `;
 
 export const CopyButton = styled.div`
@@ -91,5 +100,9 @@ export const Button = styled.a`
 
     :hover {
         box-shadow:  0 0 10px var(--shadowColor), 0 0 40px  var(--shadowColor) , 0 0 80px var(--shadowColor);
+    }
+
+    @media (max-width: 700px) {
+        margin-top: 40px;
     }
 `;
