@@ -20,7 +20,7 @@ export default function Home() {
 
   const Copy = useRef<HTMLDivElement>(null);
 
-  const ListNumbers = [];
+  var ListNumbers : Array<string> = [];
 
   const timerValue = 200;
   const REPEAT_COUNT = 8;
