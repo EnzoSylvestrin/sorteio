@@ -78,7 +78,7 @@ export default function Home() {
     }
     element.style.animation = 'sort 0.2s ease';
     element.style.animationIterationCount = REPEAT_COUNT.toString();
-    let random : string;
+    let random : string = '';
     for(let i = 0; i < REPEAT_COUNT; i++) {
       random = GenerateRandom().toString()
       await sleep();
