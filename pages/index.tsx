@@ -20,6 +20,8 @@ export default function Home() {
 
   const Copy = useRef<HTMLDivElement>(null);
 
+  const ListNumbers = [];
+
   const timerValue = 200;
   const REPEAT_COUNT = 8;
 
@@ -76,10 +78,18 @@ export default function Home() {
     }
     element.style.animation = 'sort 0.2s ease';
     element.style.animationIterationCount = REPEAT_COUNT.toString();
+    let random : string;
     for(let i = 0; i < REPEAT_COUNT; i++) {
+      random = GenerateRandom().toString()
       await sleep();
-      element.innerHTML = GenerateRandom().toString();
+      if (i == REPEAT_COUNT - 1 && ListNumbers.indexOf(random) > -1) {
+        i--;
+      }
+      else {
+        element.innerHTML = random;
+      }
     }
+    ListNumbers.push(random)
     element.style.animation = '';
   }
 
