@@ -80,14 +80,12 @@ export default function Home() {
     element.style.animationIterationCount = REPEAT_COUNT.toString();
     let random : string = '';
     for(let i = 0; i < REPEAT_COUNT; i++) {
-      random = GenerateRandom().toString()
+      random = GenerateRandom().toString();
       await sleep();
-      if (i == REPEAT_COUNT - 1 && ListNumbers.indexOf(random) > -1) {
-        i--;
+      while (i == REPEAT_COUNT - 1 && ListNumbers.indexOf(random) > -1) {
+        random = GenerateRandom().toString();
       }
-      else {
-        element.innerHTML = random;
-      }
+      element.innerHTML = random;
     }
     ListNumbers.push(random)
     element.style.animation = '';
