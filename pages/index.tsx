@@ -10,6 +10,7 @@ import { AiOutlineCheck } from 'react-icons/ai';
 export default function Home() {
 
   const [icon, setIcon] = useState(<BiCopy />);
+  const [running, setRunning] = useState(false);
 
   const p1 = useRef<HTMLParagraphElement>(null);
   const p2 = useRef<HTMLParagraphElement>(null);  
@@ -36,40 +37,29 @@ export default function Home() {
     await sleep(2000);
     element?.classList.remove('copied');
     setIcon(<BiCopy />);
-    copy(ConcatP());
+    copy(ConcatList());
   }
 
   const SortNumbers = async (e : any) => {
     e.preventDefault();
-    await ChangeNumbers(p1.current != null ? p1.current : undefined);
-    await ChangeNumbers(p2.current != null ? p2.current : undefined);
-    await ChangeNumbers(p3.current != null ? p3.current : undefined);
-    await ChangeNumbers(p4.current != null ? p4.current : undefined);
-    await ChangeNumbers(p5.current != null ? p5.current : undefined);
-    await ChangeNumbers(p6.current != null ? p6.current : undefined);
+    if (!running) {
+      setRunning(true);
+      await ChangeNumbers(p1.current != null ? p1.current : undefined);
+      await ChangeNumbers(p2.current != null ? p2.current : undefined);
+      await ChangeNumbers(p3.current != null ? p3.current : undefined);
+      await ChangeNumbers(p4.current != null ? p4.current : undefined);
+      await ChangeNumbers(p5.current != null ? p5.current : undefined);
+      await ChangeNumbers(p6.current != null ? p6.current : undefined);
+      setRunning(false);
+    }
   }
 
-  const ConcatP = () : string => {
+  const ConcatList = () : string => {
     let finalStr = '';
-    if (p1.current != null) {
-      finalStr += p1.current.innerHTML;
+    for (let item of ListNumbers) {
+      finalStr += item;
     }
-    if (p2.current != null) {
-      finalStr += p2.current.innerHTML;
-    }
-    if (p3.current != null) {
-      finalStr += p3.current.innerHTML;
-    }
-    if (p4.current != null) {
-      finalStr += p4.current.innerHTML;
-    }
-    if (p5.current != null) {
-      finalStr += p5.current.innerHTML;
-    }
-    if (p6.current != null) {
-      finalStr += p6.current.innerHTML;
-    }
-    return finalStr; // for some reason the ternary operator does not work here
+    return finalStr; 
   }
 
   const ChangeNumbers = async (element? : HTMLParagraphElement) => {
